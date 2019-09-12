@@ -3,7 +3,6 @@ import nltk
 nltk.download('punkt')
 nltk.download('gutenberg')
 
-# Task 1 (1 mark)
 import collections
 
 
@@ -39,7 +38,6 @@ def get_top_tokens(text_collection, n, stopwords):
     return sorted(counter, key=counter.get, reverse=True)[:n]
 
 
-# Task 2 (1 mark)
 def get_tf(text, template):
     """Return the frequency of each of the tokens listed in the template.
     Make sure that the comparison with the words in the template is not case
@@ -67,13 +65,12 @@ def get_tf(text, template):
     return freq_list
 
 
-# Task 3 (1 mark)
 from math import log
 def get_idf(text_collection, template):
     """Return a list of inverse document frequencies for every token listed in the
     template, where each element in text_collection represents one document.
-    Again, make sure that the comparisons are not case sensitive. The inverse
-    document frequency is computed by the formula indicated in the lectures,
+    Make sure that the comparisons are not case sensitive. The inverse
+    document frequency is computed by the formula below,
     where the base of log is 10:
 
                         number of documents
@@ -113,11 +110,10 @@ def get_idf(text_collection, template):
 
 
 
-# Task 4 (1 mark)
 def get_tfidf(text_collection, list_documents, template):
     """Return the tf.idf of each document of the list of documents, where the idf
     is computed relative to the text collection. The tf.idf values should be
-    computed based on the words of the template. Again, make sure that all
+    computed based on the words of the template. Make sure that all
     comparisons are not case sensitive.
     >>> get_tfidf(gutenberg_collection, gutenberg_collection[:2], ['unto', 'lord', 'thou'])
     [[0.0, 0.4750874762857489, 0.1413291527964693], [0.0, 0.7126312144286233, 0.0]]
@@ -137,19 +133,15 @@ def get_tfidf(text_collection, list_documents, template):
     return tf_idfs
 
 
-# Task 5 (1 mark)
 from math import sqrt
 def cosine_similarity(text_collection, text1, text2, template):
     """Return the cosine similarity between the tfidf of text1 and that of text2
-    where the cosine similarity is defined with the formula given in the
-    lectures:
+    where the cosine similarity is defined with the formula:
 
                                 sum_i(text1_i*text2_i)
     cos(text1, text2) = ----------------------------------------------y
                         sqrt(sum_i(text1_i^2)) sqrt(sum_i(text2_i^2))
 
-    You can implement the cosine similarity directly, or you can use a library such as sklearn:
-    https://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.cosine_similarity.html
     >>> cosine_similarity(gutenberg_collection, gutenberg_collection[0], gutenberg_collection[0], ['unto', 'lord', 'thou'])
     1.0
     >>> cosine_similarity(gutenberg_collection, gutenberg_collection[0], gutenberg_collection[1], ['unto', 'lord', 'thou'])
@@ -169,7 +161,7 @@ def cosine_similarity(text_collection, text1, text2, template):
     
 
 
-# DO NOT MODIFY THE CODE BELOW
+
 if __name__ == "__main__":
     import doctest
 
